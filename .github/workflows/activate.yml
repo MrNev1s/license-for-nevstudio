@@ -1,0 +1,27 @@
+name: License Activation
+
+on:
+  repository_dispatch:
+    types: [activate_license]
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Activate License
+        run: |
+          echo "Received license activation request"
+          echo "License Key: ${{ github.event.client_payload.license_key }}"
+          echo "Server ID: ${{ github.event.client_payload.server_id }}"
+          
+          # Обновляем licenses.json
+          jq '.active_licenses."${{ github.event.client_payload.license_key }}" = "${{ github.event.client_payload.server_id }}"' licenses.json > temp.json
+          mv temp.json licenses.json
+          
+          git config --global user.name "License Bot"
+          git config --global user.email "license@bot.com"
+          git add licenses.json
+          git commit -m "Activated license ${{ github.event.client_payload.license_key }}"
+          git push
