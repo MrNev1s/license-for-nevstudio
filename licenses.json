@@ -1,6 +1,1 @@
-{
-  "active_licenses": {
-    "NEV-STUDIO-TEST": null,
-    "VALID-KEY-456": "123.45.67.89:25565"
-  }
-}
+{"active_licenses":{"VALID-KEY-456":"123.45.67.89:25565","NEV-STUDIO-TEST":"default-server:25647"}}
