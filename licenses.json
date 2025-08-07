@@ -1,7 +1,6 @@
 {
   "active_licenses": {
     "TEST-KEY-123": null,
-    "PROD-KEY-456": null
-  },
-  "used_licenses": {}
+    "VALID-KEY-456": "123.45.67.89:25565"
+  }
 }
